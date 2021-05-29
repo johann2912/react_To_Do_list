@@ -48,7 +48,6 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
                     <div className = "form-group">
                         <label>Descripcion</label>
                         <textarea rows = "5" className = "form-control" value = {description} onChange = {handleChange} name = "description"></textarea>
-                        <input type="text" value = {description} onChange = {handleChange} name = "search" />
                     </div>
                 
             </ModalBody>
