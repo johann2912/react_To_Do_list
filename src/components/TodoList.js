@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import CreateTaskPopup from '../modals/CreateTask';
 import CreateTask from '../modals/CreateTask';
 import Card from './Card';
 
@@ -45,13 +46,16 @@ const TodoList = () => {
         setTaskList(taskList)
         setModal(false)
     }
+        
+    
 
     return (
         <>
             <div className = "header text-center">
                 <h3>Todo List</h3>
-                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Crear tarea</button>
-                
+                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Crear tarea</button><br/>
+
+                <input type="text" class="barra mt-3 border-aqua" placeholder="Buscar" />
             </div>
             <div className = "task-container">
             {taskList && taskList.map((obj , index) => <Card taskObj = {obj} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}
