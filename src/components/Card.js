@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const Card = ({taskObj, index, deleteTask, updateListArray}) => {
     const [modal, setModal] = useState(false);
 
