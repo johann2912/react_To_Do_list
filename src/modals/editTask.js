@@ -4,6 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
+    const [status, setStatus] = useState('');
 
     const handleChange = (e) => {
         
@@ -18,16 +19,32 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
 
     }
 
+
+
+    const handleChangeStatus = (e) => {
+        e.preventDefault();
+        let tempObj = {}
+        tempObj['Name'] = taskName
+        tempObj['Description'] = description
+        tempObj['Status'] = "Realizado"
+       
+        updateTask(tempObj)
+
+    }
+
+
     useEffect(() => {
         setTaskName(taskObj.Name)
         setDescription(taskObj.Description)
-    },[taskObj.Description, taskObj.Name])
+        setStatus(taskObj.Status)
+    },[taskObj.Description, taskObj.Name,taskObj.Status])
 
     const handleUpdate = (e) => {
         e.preventDefault();
         let tempObj = {}
         tempObj['Name'] = taskName
         tempObj['Description'] = description
+      
         updateTask(tempObj)
     }
 
@@ -49,6 +66,7 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
             <ModalFooter>
             <Button color="primary" onClick={handleUpdate}>Update</Button>{' '}
             <Button color="secondary" onClick={toggle}>Cancel</Button>
+            <Button color="secondary" onClick={handleChangeStatus}>Actualizar y marcar como realizado</Button>
             </ModalFooter>
       </Modal>
     );

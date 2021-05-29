@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {GATOAPI} from '../constants/api';
 
 const CreateTaskPopup = ({modal, toggle, save}) => {
     const [taskName, setTaskName] = useState('');
@@ -18,11 +19,18 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
 
     }
 
+    const random = async function  () {
+        let log = await GATOAPI.get("fact");
+        setDescription(log.data.fact)
+        return await GATOAPI.get("fact");
+    } 
+
     const handleSave = (e) => {
         e.preventDefault()
         let taskObj = {}
         taskObj["Name"] = taskName
         taskObj["Description"] = description
+        taskObj["Status"] = "Pendiente"
         save(taskObj)
 
     }
@@ -45,6 +53,7 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
             <ModalFooter>
                 <Button color="primary" onClick={handleSave}>Crear</Button>{' '}
                 <Button color="secondary" onClick={toggle}>Cancelar</Button>
+                <Button color="secondary" onClick={() => random()}>frase aleatoria</Button>
             </ModalFooter>
         </Modal>
     );
