@@ -21,7 +21,7 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
     useEffect(() => {
         setTaskName(taskObj.Name)
         setDescription(taskObj.Description)
-    },[])
+    },[taskObj.Description, taskObj.Name])
 
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -33,24 +33,24 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
 
     return (
         <Modal isOpen={modal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Create Tarea</ModalHeader>
+            <ModalHeader toggle={toggle}>Update Task</ModalHeader>
             <ModalBody>
             
                     <div className = "form-group">
-                        <label>Titulo</label>
+                        <label>Task Name</label>
                         <input type="text" className = "form-control" value = {taskName} onChange = {handleChange} name = "taskName"/>
                     </div>
                     <div className = "form-group">
-                        <label>Descripcion</label>
+                        <label>Description</label>
                         <textarea rows = "5" className = "form-control" value = {description} onChange = {handleChange} name = "description"></textarea>
                     </div>
                 
             </ModalBody>
             <ModalFooter>
-                <Button color="primary" onClick={handleUpdate}>Crear</Button>{' '}
-                <Button color="secondary" onClick={toggle}>Cancelar</Button>
+            <Button color="primary" onClick={handleUpdate}>Update</Button>{' '}
+            <Button color="secondary" onClick={toggle}>Cancel</Button>
             </ModalFooter>
-        </Modal>
+      </Modal>
     );
 };
 

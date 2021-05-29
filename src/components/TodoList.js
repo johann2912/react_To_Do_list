@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import CreateTask from '../modals/createTask';
+import CreateTask from '../modals/CreateTask';
 import Card from './Card';
 
 const TodoList = () => {

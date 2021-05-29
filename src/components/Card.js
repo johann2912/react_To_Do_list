@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import EditTask from '../modals/EditTask'
 
 const Card = ({taskObj, index, deleteTask, updateListArray}) => {
     const [modal, setModal] = useState(false);
@@ -31,7 +31,7 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
         setModal(!modal);
     }
 
-    const updateTask = (obj) => {
+    const updatetask = (obj) => {
         updateListArray(obj, index)
     }
 
@@ -40,10 +40,10 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
     }
 
     return (
-        <div>
+        
             <div class = "card-wrapper mr-5">
             <div class = "card-top" style={{"background-color": colors[index%5].primaryColor}}></div>
-            <div class = "task-holder">
+                <div class = "task-holder">
                 <span class = "card-header" style={{"background-color": colors[index%5].secondaryColor, "border-radius": "10px"}}>{taskObj.Name}</span>
                 <p className = "mt-3">{taskObj.Description}</p>
 
@@ -52,9 +52,9 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
                     <i class="fas fa-trash-alt" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i>
                 </div>
             </div>
-            
+            <EditTask modal = {modal} toggle = {toggle} updateTask = {updatetask} taskObj = {taskObj}/>
             </div>
-        </div>
+        
     );
 };
 
