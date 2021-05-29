@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import CreateTaskPopup from '../modals/CreateTask';
 import CreateTask from '../modals/CreateTask';
 import Card from './Card';
 
@@ -8,6 +7,8 @@ import Card from './Card';
 const TodoList = () => {
     const [modal, setModal] = useState(false);
     const [taskList, setTaskList] = useState([])
+    const [buscador,setBuscador] = useState([])
+
     
     useEffect(() => {
         let arr = localStorage.getItem("taskList")
@@ -17,6 +18,15 @@ const TodoList = () => {
             setTaskList(obj)
         }
     }, [])
+
+    
+    const handleChange = (e) => {
+        
+        const {value} = e.target
+
+         setBuscador(value)
+       
+    }
 
 
     const deleteTask = (index) => {
@@ -54,11 +64,10 @@ const TodoList = () => {
             <div className = "header text-center">
                 <h3>Todo List</h3>
                 <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Crear tarea</button><br/>
-
-                <input type="text" class="barra mt-3 border-aqua" placeholder="Buscar" />
+                <input type="text" class="barra mt-3 border-aqua" placeholder="Buscar" value = {buscador} onChange = {handleChange} name = "buscador" />
             </div>
             <div className = "task-container">
-            {taskList && taskList.map((obj , index) => <Card taskObj = {obj} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}
+            {taskList && taskList.filter(task => task.Description.includes(buscador)).map((obj , index) => <Card taskObj = {obj} index = {index} deleteTask = {deleteTask} updateListArray = {updateListArray}/> )}
             </div>
             <CreateTask toggle = {toggle} modal = {modal} save = {saveTask}/>
         </>
