@@ -20,16 +20,13 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
     }
 
 
-
     const handleChangeStatus = (e) => {
         e.preventDefault();
         let tempObj = {}
         tempObj['Name'] = taskName
         tempObj['Description'] = description
-        tempObj['Status'] = "Realizado"
-       
+        tempObj['Status'] = "Realizado"       
         updateTask(tempObj)
-
     }
 
 
@@ -44,7 +41,6 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
         let tempObj = {}
         tempObj['Name'] = taskName
         tempObj['Description'] = description
-      
         updateTask(tempObj)
     }
 
@@ -64,9 +60,9 @@ const EditTaskPopup = ({modal, toggle, updateTask, taskObj}) => {
                 
             </ModalBody>
             <ModalFooter>
-            <Button color="primary" onClick={handleUpdate}>Update</Button>{' '}
-            <Button color="secondary" onClick={toggle}>Cancel</Button>
-            <Button color="secondary" onClick={handleChangeStatus}>Actualizar y marcar como realizado</Button>
+            <Button color="success" onClick={handleUpdate}>Aceptar</Button>
+            <Button color="primary" onClick={handleChangeStatus}>Actualizar y marcar como realizado</Button>
+            <Button color="danger" onClick={toggle}>Cancelar</Button>
             </ModalFooter>
       </Modal>
     );

@@ -51,9 +51,10 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
                 
             </ModalBody>
             <ModalFooter>
-                <Button color="primary" onClick={handleSave}>Crear</Button>{' '}
-                <Button color="secondary" onClick={toggle}>Cancelar</Button>
-                <Button color="secondary" onClick={() => random()}>frase aleatoria</Button>
+                <Button color="success" onClick={handleSave}>Crear</Button>
+                <Button color="primary" onClick={() => random()}>frase aleatoria</Button>
+                <Button color="danger" onClick={toggle}>Cancelar</Button>
+                
             </ModalFooter>
         </Modal>
     );
